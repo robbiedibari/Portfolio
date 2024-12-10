@@ -23,17 +23,17 @@ const Sidebar = () => (
      </nav>
      <ul>
          <li>
-            <a target='_blank' rel='noreferrer' href=''>
+            <a target='_blank' rel='noreferrer' href='https://www.linkedin.com/in/roberto-di-bari/'>
                 <FontAwesomeIcon icon={faLinkedin} color="#4d4d4e" />
             </a>
          </li>
          <li>
-            <a target='_blank' rel='noreferrer' href=''>
+            <a target='_blank' rel='noreferrer' href='https://github.com/robbiedibari'>
                 <FontAwesomeIcon icon={faGithub} color="#4d4d4e" />
             </a>
          </li>
          <li>
-            <a target='_blank' rel='noreferrer' href=''>
+            <a target='_blank' rel='noreferrer' href='https://www.instagram.com/roberto.beiri/'>
                 <FontAwesomeIcon icon={faInstagram} color="#4d4d4e" />
             </a>
          </li>

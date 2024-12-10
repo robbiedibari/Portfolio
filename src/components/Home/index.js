@@ -13,7 +13,7 @@ const Home = () => {
 
     const [letterClass, setLetterClass] = useState('text-animate');
     const nameArray = [' ', 'R', 'o', 'b', 'e', 'r', 't', 'o'];
-    const jobArray = ['S', 'o', 'f', 't', 'w', 'a', 'r', 'e', ' ', 'E', 'n', 'g', 'i', 'n', 'e', 'e', 'r'];
+    const jobArray = ['A',' ','S', 'o', 'f', 't', 'w', 'a', 'r', 'e', ' ', 'E', 'n', 'g', 'i', 'n', 'e', 'e', 'r'];
     
     const particlesInit = async (main) => {
         await loadFull(main);
