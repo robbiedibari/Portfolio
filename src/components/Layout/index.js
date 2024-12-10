@@ -12,7 +12,7 @@ const Layout = () =>{
 
         <span className="tags bottom-tags">&alt;body&gt;</span>
         <br />
-        <span className='bottom-tag-html'>&alt;body&gt;</span>
+        <span className='bottom-tag-html'></span>
      </div>
       </div>
     )
