@@ -7,17 +7,60 @@ import React, { useEffect, useRef, useState } from 'react'
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
   const form = useRef()
+  const [emailError, setEmailError] = useState('')
+  const [formError, setFormError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLetterClass('text-animate-hover')
     }, 4000)
 
-    return () => clearTimeout(timer) // Cleanup function to clear the timeout
+    return () => clearTimeout(timer)
   }, [])
 
-  const sendEmail = (e) => {
+  // Email format validation function
+  const validateEmail = (email) => {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    return emailPattern.test(email)
+  }
+
+  // Function to verify email existence using Hunter.io API
+  const checkEmailExists = async (email) => {
+    const apiKey = '4e65a01e412f59e5dfa9d30358ba8eec4b32abb4' // Replace with your Hunter.io API key
+    try {
+      const response = await fetch(
+        `https://api.hunter.io/v2/email-verifier?email=${email}&api_key=${apiKey}`
+      )
+      const data = await response.json()
+      return data.data.status === 'valid'
+    } catch (error) {
+      console.error('Email verification error:', error)
+      return false
+    }
+  }
+
+  const sendEmail = async (e) => {
     e.preventDefault()
+    setEmailError('')
+    setFormError('')
+    setIsLoading(true)
+
+    const formData = new FormData(form.current)
+    const email = formData.get('email').trim()
+
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address.')
+      setIsLoading(false)
+      return
+    }
+
+    const emailExists = await checkEmailExists(email)
+    if (!emailExists) {
+      setEmailError('This email address does not appear to exist.')
+      setIsLoading(false)
+      return
+    }
 
     emailjs
       .sendForm('service_1lygs05', 'template_vkgxy64', form.current, {
@@ -30,24 +73,13 @@ const Contact = () => {
         },
         (error) => {
           console.error('Email send error:', error)
-          alert('Failed to send the message, please try again.')
+          setFormError('Failed to send the message, please try again.')
         }
       )
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
-
-  //     emailjs
-  //       .sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, {
-  //         publicKey: 'YOUR_PUBLIC_KEY',
-  //       })
-  //       .then(
-  //         () => {
-  //           console.log('SUCCESS!');
-  //         },
-  //         (error) => {
-  //           console.log('FAILED...', error.text);
-  //         },
-  //       );
-  //   };
 
   return (
     <>
@@ -61,58 +93,54 @@ const Contact = () => {
             />
           </h1>
           <p>
-            Non in aliqua id pariatur officia mollit sunt in enim non minim. Ut
-            ea amet aliquip tempor magna magna id velit incididunt dolor aliquip
-            nulla. Cillum qui enim ut minim reprehenderit ullamco. Et
-            exercitation dolor velit voluptate sint. In ex officia do do laborum
-            mollit labore. Dolore irure quis dolor incididunt exercitation ex.
-            In amet incididunt Lorem nulla nulla labore nisi laboris minim
-            nostrud laborum nostrud.
+            Feel free to get in touch! Whether you have a question, a project idea, or just want to say hello, I'd love to hear from you.
           </p>
-          <div className="contact-form">
-            <form ref={form} onSubmit={sendEmail}>
-              <ul>
-                <li className="half">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    required
-                    aria-label="Name"
-                  />
-                </li>
-                <li className="half">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    required
-                    aria-label="Email"
-                  />
-                </li>
-                <li>
-                  <input
-                    placeholder="Subject"
-                    type="text"
-                    name="subject"
-                    required
-                    aria-label="Subject"
-                  />
-                </li>
-                <li>
-                  <textarea
-                    placeholder="Message"
-                    name="message"
-                    required
-                    aria-label="Message"
-                  ></textarea>
-                </li>
-                <li>
-                  <input type="submit" className="flat-button" value="SEND" />
-                </li>
-              </ul>
-            </form>
-          </div>
+
+          <form ref={form} onSubmit={sendEmail} className="contact-form">
+            <div className="form-group">
+              <label htmlFor="name">Your Name:</label>
+              <input type="text" id="name" name="name" placeholder="Name" required />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Your Email:</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="name@example.com"
+                required
+              />
+              {emailError && <small className="error-message">{emailError}</small>}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="subject">Subject:</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="Let me know how I can help you"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message">Your Message:</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Write your message here..."
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" className="send-button" disabled={isLoading}>
+              {isLoading ? 'Sending...' : 'SEND'}
+            </button>
+            {formError && <p className="error-message">{formError}</p>}
+          </form>
         </div>
       </div>
       <Loader type="ball-scale-ripple-multiple" />
@@ -121,34 +149,3 @@ const Contact = () => {
 }
 
 export default Contact
-
-// const form = useRef();
-
-//   const sendEmail = (e) => {
-//     e.preventDefault();
-
-//     emailjs
-//       .sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, {
-//         publicKey: 'YOUR_PUBLIC_KEY',
-//       })
-//       .then(
-//         () => {
-//           console.log('SUCCESS!');
-//         },
-//         (error) => {
-//           console.log('FAILED...', error.text);
-//         },
-//       );
-//   };
-
-//   return (
-//     <form ref={form} onSubmit={sendEmail}>
-//       <label>Name</label>
-//       <input type="text" name="user_name" />
-//       <label>Email</label>
-//       <input type="email" name="user_email" />
-//       <label>Message</label>
-//       <textarea name="message" />
-//       <input type="submit" value="Send" />
-//     </form>
-//   );
