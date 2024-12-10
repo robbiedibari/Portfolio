@@ -25,33 +25,34 @@
 
 
 
-.container{
-    width: 100%;
-    will-change: contents;
-    height : 90%;
+.container {
+    width: calc(100% - 60px); /* Subtract the width of the sidebar (e.g., 60px) */
+    height: 90%;
     min-height: 566px;
     position: absolute;
     opacity: 0;
-    top:5%;
+    top: 5%;
+    left: 60px; /* Offset by the width of the sidebar */
     margin: 0 auto;
-    z-index : 1;
+    z-index: 1;
     transform-style: preserve-3d;
     animation: fadeIn 1s forwards;
     animation-delay: 1s;
-}
-
-
-.about-page,.contact-page{
-    .text-zone{
-        position:absolute;
-        left: 10%;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 35%;
-        vertical-align: middle;
-        display:table-cell;
-        max-height: 90%;
+  }
+  
+  .about-page,
+  .contact-page {
+    .text-zone {
+      position: absolute;
+      left: 50%; /* Move to the center of the remaining space */
+      top: 50%;  /* Vertically center */
+      transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+      width: 60%; /* Adjust width to fit the layout */
+      max-height: 90%;
+      text-align: left;
     }
+  }
+  
 
     h1{
         font-size: 53px;
@@ -117,4 +118,3 @@
             
         }
     }
-}

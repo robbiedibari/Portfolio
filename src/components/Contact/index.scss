@@ -1,73 +1,124 @@
-.contact-form{
-    width: 100%;
-    margin-top: 20px;
+$primary-color: #ffd700;       // Yellow for the button
+$background-color: #181818;    // Dark background color
+$input-background: #2a2a2a;    // Dark gray input background
+$input-border: #444;           // Darker gray border for inputs
+$label-color: #bbb;            // Light gray for labels
+$text-color: #fff;             // White for text
+$button-hover: #e0c200;        // Slightly darker yellow for button hover
 
+.container {
+  font-family: "Helvetica";
+  width: calc(100% - 60px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  color: $text-color;
+}
 
-    ul{
-        padding: 0;
-        margin: 0;
+.contact-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-        li{
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            margin-bottom: 10px;
-            overflow: hidden;
-            display: block;
-            position: relative;
-            opacity: 0;
-            animation: fadeInUp 2s 2s;
-            animation-fill-mode: forwards;
-            clear: both;
-        }
+  .text-zone {
+    max-width: 600px;
+    text-align: center;
 
-        li.half{
-            width: 49%;
-            margin-left: 2%;
-            float: left;
-            clear: none;
-
-
-            &:first-child{
-                margin-left:0;
-            }
-        }
-    }
-
-    input[type='text'],
-    input[type='email']{
-        width: 100%;
-        border: 0;
-        background: #115173;
-        font-size: 16px;
-        height: 50px;
-        color:#fff;
-        padding: 0 20px;
-        box-sizing: border-box;
-    }
-
-    textarea{
-        width: 100%;
-        border: 0;
-        background: #115173;
-        height: 50px;
-        font-size: 16px;
-        padding: 20px;
-        min-height: 150px;
-        box-sizing: border-box;
-    }
-
-
-    .flat-button{
+    h1 {
+        font-size: 53px;
+        font-family: 'Coolvetica';
         color: #ffd700;
-        background: 0 0;
-        font: 11px;
-        letter-spacing: 3px;
-        text-decoration: none;
-        padding: 8px 10px;
-        border: 1px solid #ffd700;
-        float: right;
-        border-radius: 4px;
-
+        text-align: left;
+        font-weight: 400;
+        margin-top: 0;
+        position: relative;
+        margin-bottom: 40px;
+        left: 10px;
     }
+
+    p {
+      font-size: 1.5rem;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+  }
+
+  .contact-form {
+    background: $background-color;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 600px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; //
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+
+      label {
+        font-size: 1rem;
+        text-align: left;
+        font-weight: 500;
+        color: $label-color;
+        margin-bottom: 8px;
+      }
+
+      input,
+      textarea {
+        padding: 16px;
+        background: $input-background;
+        border: 1px solid $input-border;
+        border-radius: 6px;
+        font-size: 1.5rem;
+        color: $text-color;
+        transition: border-color 0.2s ease;
+
+        &::placeholder {
+          color: #888;
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-size:1rem;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+        }
+      }
+    }
+    .error-message {
+      color: #ff4d4f;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      visibility: visible;
+    }
+    
+    .send-button[disabled] {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    
+
+    .send-button {
+      padding: 12px;
+      background-color: $primary-color;
+      color: #000;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $button-hover;
+      }
+
+      &:active {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
 }
