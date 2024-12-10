@@ -1,4 +1,5 @@
 $primary-color:#ffd700;
+$secondary-color: #000000;
 
 @import 'animate.css';
 @import '~loaders.css/src/animations/ball-scale-ripple-multiple.scss';
@@ -37,6 +38,7 @@ textarea{
 
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -51,7 +53,6 @@ textarea{
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -72,15 +73,6 @@ textarea{
   to {
     transform: rotate(360deg);
   }
-}
-
-.particles-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; // Ensure particles stay behind the content
 }
 
 .app {
