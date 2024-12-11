@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import GridShowcase from '../gridshowcase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt, faCode } from '@fortawesome/free-solid-svg-icons';
 import AnimatedLetters from '../AnimatedLetters'
@@ -37,30 +38,7 @@ const Projects = () => {
       return () => clearTimeout(timer);
   }, []);
   return (
-    <div className=" container about-project">
-      <h1>
-            <AnimatedLetters
-              letterClass={letterClass}
-              strArray={['P', 'r', 'o', 'j', 'e', 'c ', 't', 's']}
-              idx={15}
-            />
-          </h1>
-    
-      <div className="projects-grid">
-        {project.map((project) => (
-          <div key={project.id} className="project-card">
-            <div className="project-content">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
-                <FontAwesomeIcon icon={faExternalLinkAlt} /> View Project
-              </a>
-            </div>
-            <FontAwesomeIcon icon={faCode} className="project-icon" />
-          </div>
-        ))}
-      </div>
-    </div>
+    <GridShowcase />
   );
 };
 
