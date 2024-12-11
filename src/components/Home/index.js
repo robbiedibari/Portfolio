@@ -4,8 +4,7 @@ import './index.scss';
 import AnimatedLetters from '../AnimatedLetters';
 import Loader from 'react-loaders';
 import ProfilePicture from '../../assets/images/Profile_Picture.jpg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPython } from '@fortawesome/free-brands-svg-icons';
+
 
 const Home = () => {
 
