@@ -1,7 +1,5 @@
 import AnimatedLetters from '../AnimatedLetters';
 import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCss3, faGit, faHtml5, faJava, faJsSquare, faPython, faReact } from '@fortawesome/free-brands-svg-icons';
 import './index.scss';
 import Loader from 'react-loaders'; // Correct path to the Loader component
 import TypewriterEffect from './TypewriterEffect';

@@ -3,6 +3,7 @@ import GridShowcase from '../gridshowcase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt, faCode } from '@fortawesome/free-solid-svg-icons';
 import AnimatedLetters from '../AnimatedLetters'
+import Loader from 'react-loaders';
 import './index.scss';
 
 
@@ -38,7 +39,22 @@ const Projects = () => {
       return () => clearTimeout(timer);
   }, []);
   return (
+    <>
+    <div className="container about-project">
+      <div className='text-zone'>
+      <h1>
+        <AnimatedLetters
+          letterClass={letterClass}
+          strArray={['P', 'r', 'o', 'j', 'e', 'c', 't', 's']}
+          idx={15}
+        />
+      </h1>
+    
     <GridShowcase />
+    </div>
+    </div>
+  <Loader type="ball-scale-ripple-multiple" />
+</>
   );
 };
 
