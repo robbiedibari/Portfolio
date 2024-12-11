@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCss3, faGit, faHtml5, faJava, faJsSquare, faPython, faReact } from '@fortawesome/free-brands-svg-icons';
 import './index.scss';
 import Loader from 'react-loaders'; // Correct path to the Loader component
-import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import TypewriterEffect from './TypewriterEffect';
 import SkillsShowcase from './SkillsShowcase';
 
@@ -47,10 +46,10 @@ const About = () => {
             />
           </h1>
           <p>
-            Hi, I'm Roberto Di Bari, a recent Computer Science graduate with a passion for building scalable backend systems and exploring the exciting world of Machine Learning. I thrive on solving complex problems and enjoy bringing ideas to life through Python and other technologies.
+          Hi, I'm Roberto di Bari, a Computer Science graduate with a passion for coding and a growing interest in backend development and Machine Learning. I thrive on solving complex problems and enjoy bringing ideas to life through Python and other technologies. I'm enthusiastic about learning how to build efficient backend systems and continuously seek opportunities to expand my skill set.
           </p>
           <p>
-            I recently graduated with a Bachelor's in Computer Science. My journey into programming started with Python, and I've been captivated by the power and flexibility it offers for both backend development and machine learning projects.
+          My programming journey began with Python, and I’ve been captivated by its versatility ever since. Whether experimenting with backend concepts or exploring machine learning, I’m eager to apply my knowledge, tackle new challenges, and grow as a software engineer.
           </p>
 
           <TypewriterEffect />

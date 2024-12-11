@@ -1,0 +1,62 @@
+.project-showcase {
+    padding: 60px 20px;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh; // Ensures it takes the full height of the viewport
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    .projects-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px; // Limits the width of the grid
+      width: 100%;
+    }
+  
+    .project-card {
+      background: #1a1a1a; // Dark background for cards
+      color: #ffd700; // Yellow text to match the theme
+      padding: 20px;
+      width: 280px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(255, 180, 0, 0.2);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+  
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(255, 180, 0, 0.4);
+      }
+    
+      p {
+        font-size: 1rem;
+        color: #ccc;
+        margin-bottom: 20px;
+      }
+  
+      .project-link {
+        color: #ffd700;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: color 0.3s ease;
+  
+        &:hover {
+          color: #ffd700; // Brighter yellow on hover
+        }
+  
+        svg {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  

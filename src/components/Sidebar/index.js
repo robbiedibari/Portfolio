@@ -2,7 +2,7 @@ import './index.scss';
 import { Link, NavLink } from 'react-router-dom';
 import LogoS from '../../assets/images/logo_transparent.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faHome, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faEnvelope, faHome, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const Sidebar = () => (
@@ -17,6 +17,10 @@ const Sidebar = () => (
       <NavLink to="/about" className={({ isActive }) => (isActive ? 'active about-link' : 'about-link')}>
         <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
       </NavLink>
+      <NavLink to="/projects" className={({ isActive }) => (isActive ? 'active projects-link' : 'projects-link')}>
+     <FontAwesomeIcon icon={faCode} color="#4d4d4e" />
+    </NavLink>
+
       <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active contact-link' : 'contact-link')}>
         <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
       </NavLink>
