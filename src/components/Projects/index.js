@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import GridShowcase from '../gridshowcase';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt, faCode } from '@fortawesome/free-solid-svg-icons';
 import AnimatedLetters from '../AnimatedLetters'
 import Loader from 'react-loaders';
 import './index.scss';
